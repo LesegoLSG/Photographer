@@ -4,15 +4,15 @@
 
 @layer base {
   body {
-    @apply overflow-hidden text-primary font-secondary bg-white;
+    @apply text-primary font-secondary bg-white;
   }
 
   .h1 {
-    @apply text-[54px] lg:text-[108px] font-primary font-bold capitalize leading-[120%] tracking-[0.05em] mb-2;
+    @apply text-[54px] md:text-[90px] font-primary font-bold capitalize leading-[120%] tracking-[0.05em] mb-2;
   }
 
   .section {
-    @apply h-screen w-screen;
+    @apply h-auto w-full;
   }
 
   .btn {
