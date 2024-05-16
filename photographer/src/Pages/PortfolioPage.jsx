@@ -2,7 +2,9 @@ import React from 'react'
 
 const PortfolioPage = () => {
   return (
-    <div>PortfolioPage</div>
+    <section className="section bg-pink-200">
+    Home
+</section>
   )
 }
 
