@@ -1,13 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import AnimRoutes from './Components/AnimRoutes';
+import Header from './Components/Header/Header';
 
 function App() {
 
   return (
-    <div>
-
-    </div>
+    <>
+    <Router>
+          <Header/>
+        <AnimRoutes/>
+    </Router>
+        
+    </>
   )
 }
 
