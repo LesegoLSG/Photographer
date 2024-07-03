@@ -8,14 +8,18 @@
   }
 
   .h1 {
-    @apply text-[54px] md:text-[90px] font-primary font-bold capitalize leading-[120%] tracking-[0.05em] mb-2;
+    @apply text-[54px] md:text-[90px] font-primary font-bold text-gray-800;
+  }
+
+  .h2 {
+    @apply text-2xl font-semibold font-primary
   }
 
   .section {
-    @apply h-auto w-full;
+    @apply h-auto w-full px-6 md:px-4;
   }
 
   .btn {
-    @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-primary text-white;
+    @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-primary text-white rounded-lg;
   }
 }

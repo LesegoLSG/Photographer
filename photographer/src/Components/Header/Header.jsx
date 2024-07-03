@@ -1,57 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Socials from './Socials';
-import MobileNav from './MobileNav';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Socials from "./Socials";
+import MobileNav from "./MobileNav";
+import Logo from "../../assets/Logo.png";
+import { CursorContext } from "../../Context/CursorContext";
+import Toggle from "../Toggle/Toggle";
 
+const Header = ({ isDarkMode, setIsDarkMode }) => {
+  const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
 
-const Header = () => {
   return (
-   <header className=" fixed w-full px-[30px] lg:px-[100px] z-30 h-[100px] lg:h-[140px] flex items-center">
-        <div className="flex flex-col lg:flex-row lg:items-center w-full justify-between">
-            {/* Logo */}
-            <Link to={'/'} className="max-w-[200px]">
-                <h1 className="text-3xl font-bold italic">Less-Ego</h1>
-            </Link>
-            {/* Navigation */}
-            <nav className="hidden md:flex gap-x-12 font-semibold">
-                {/* Link to Home */}
-                <Link 
-                to={'/'}
-                className="text-[#696c6d] hover:text-primary transition"
-                >
-                    Home
-                </Link>
-                {/* About */}
-                <Link 
-                to={'/about'}
-                className="text-[#696c6d] hover:text-primary transition"
-                >
-                    About
-                </Link>
-                {/* Portfolio */}
-                <Link 
-                to={'/portfolio'}
-                className="text-[#696c6d] hover:text-primary transition"
-                >
-                    Portfolio
-                </Link>
-                {/* Contact */}
-                <Link 
-                to={'/contact'}
-                className="text-[#696c6d] hover:text-primary transition"
-                >
-                    Contact
-                </Link>
-
-            </nav>
-         
+    <header className="fixed w-full px-[30px] lg:pt-6 lg:px-[100px] z-30 h-[70px] lg:h-[70px] flex items-center bg-white dark:bg-neutral-900">
+      <div className="flex flex-row lg:items-center w-full justify-between">
+        {/* Logo and Toggle */}
+        <div className="flex items-center">
+          <Link
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+            to={"/"}
+            className="max-w-[100px] md:max-w-[140px]"
+          >
+            <img src={Logo} alt="Logo" />
+          </Link>
+          {/* Toggle dark/light mode */}
+          <Toggle isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         </div>
-           {/* Socials */}
-           <Socials/>
-            {/* mobile nav */}
-            <MobileNav/>
-   </header>
-  )
-}
 
-export default Header
+        {/* Navigation */}
+        <nav
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+          className="hidden md:flex gap-x-12 font-semibold"
+        >
+          <Link to={"/"} className="text-gray-800 dark:text-white">
+            Home
+          </Link>
+          <Link to={"/about"} className="text-gray-800 dark:text-white">
+            About
+          </Link>
+          <Link to={"/services"} className="text-gray-800 dark:text-white">
+            Services
+          </Link>
+          <Link to={"/portfolio"} className="text-gray-800 dark:text-white">
+            My Work
+          </Link>
+          <Link to={"/contact"} className="text-gray-800 dark:text-white">
+            Contact
+          </Link>
+        </nav>
+      </div>
+
+      {/* Socials */}
+      <Socials />
+      {/* Mobile nav */}
+      <MobileNav />
+    </header>
+  );
+};
+
+export default Header;
