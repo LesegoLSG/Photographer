@@ -24,9 +24,9 @@ const ServicesPage = () => {
           transition={{ ...transition1, delay: 0.2 }}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className="h1 dark:text-white"
+          className="h1 dark:text-white text-center"
         >
-          Our Services
+          Our <span className="text-touch">Expertise</span>
         </motion.h1>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

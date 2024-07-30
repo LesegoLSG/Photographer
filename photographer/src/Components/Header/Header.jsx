@@ -5,6 +5,7 @@ import MobileNav from "./MobileNav";
 import Logo from "../../assets/Logo.png";
 import { CursorContext } from "../../Context/CursorContext";
 import Toggle from "../Toggle/Toggle";
+import { scrollToTop } from "../Reusable/ScrollToTop";
 
 const Header = ({ isDarkMode, setIsDarkMode }) => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -23,7 +24,13 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
             <img src={Logo} alt="Logo" />
           </Link>
           {/* Toggle dark/light mode */}
-          <Toggle isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+          <div
+            className=""
+            onMouseEnter={mouseEnterHandler}
+            onMouseLeave={mouseLeaveHandler}
+          >
+            <Toggle isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+          </div>
         </div>
 
         {/* Navigation */}
@@ -32,19 +39,39 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
           onMouseLeave={mouseLeaveHandler}
           className="hidden md:flex gap-x-12 font-semibold"
         >
-          <Link to={"/"} className="text-gray-800 dark:text-white">
+          <Link
+            to={"/"}
+            className="text-gray-800 dark:text-white"
+            onClick={scrollToTop}
+          >
             Home
           </Link>
-          <Link to={"/about"} className="text-gray-800 dark:text-white">
+          <Link
+            to={"/about"}
+            className="text-gray-800 dark:text-white"
+            onClick={scrollToTop}
+          >
             About
           </Link>
-          <Link to={"/services"} className="text-gray-800 dark:text-white">
+          <Link
+            to={"/services"}
+            className="text-gray-800 dark:text-white"
+            onClick={scrollToTop}
+          >
             Services
           </Link>
-          <Link to={"/portfolio"} className="text-gray-800 dark:text-white">
+          <Link
+            to={"/portfolio"}
+            className="text-gray-800 dark:text-white"
+            onClick={scrollToTop}
+          >
             My Work
           </Link>
-          <Link to={"/contact"} className="text-gray-800 dark:text-white">
+          <Link
+            to={"/contact"}
+            className="text-gray-800 dark:text-white"
+            onClick={scrollToTop}
+          >
             Contact
           </Link>
         </nav>

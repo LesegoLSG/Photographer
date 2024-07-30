@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import PortfolioModal from "../Components/Portfolio/PortfolioModal";
 import { transition1 } from "../Components/Transitions";
 import { CursorContext } from "../Context/CursorContext";
+import { scrollToTop } from "../Components/Reusable/ScrollToTop";
 
 const PortfolioPage = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -67,22 +68,33 @@ const PortfolioPage = () => {
       transition={transition1}
       className="section pt-32"
     >
-      <div className="h1 w-full flex justify-center items-center dark:text-white">
+      <div className=" w-full flex-col md:flex-row justify-center items-center ">
         <motion.h1
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
+          className="h1 dark:text-white text-center"
         >
-          Creative Work
+          <span className="text-touch">Creative</span> Work
         </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...transition1, delay: 0.4 }}
+          onMouseEnter={mouseEnterHandler}
+          onMouseLeave={mouseLeaveHandler}
+          className="h2 dark:text-white text-center pb-4"
+        >
+          Memories keep the past alive
+        </motion.h2>
       </div>
       {/* Filter buttons */}
-      <div className="w-full h-auto flex justify-center items-center flex-wrap gap-x-2 my-2">
+      <div className="w-full h-auto flex justify-center items-center flex-wrap gap-x-2 gap-y-2 my-2">
         <button
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn ${
+          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn1 ${
             filter === "all" ? "bg-primary" : ""
           }`}
           onClick={() => handleFilterChange("all")}
@@ -93,7 +105,7 @@ const PortfolioPage = () => {
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn ${
+          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn1 ${
             filter === "wedding" ? "bg-primary" : ""
           }`}
           onClick={() => handleFilterChange("wedding")}
@@ -104,7 +116,7 @@ const PortfolioPage = () => {
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn ${
+          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn1 ${
             filter === "portrait" ? "bg-primary" : ""
           }`}
           onClick={() => handleFilterChange("portrait")}
@@ -115,7 +127,7 @@ const PortfolioPage = () => {
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn ${
+          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn1 ${
             filter === "travel" ? "bg-primary" : ""
           }`}
           onClick={() => handleFilterChange("travel")}
@@ -126,7 +138,7 @@ const PortfolioPage = () => {
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn ${
+          className={`min-w-[70px] py-2 px-4 bg-black text-white rounded md:btn1 ${
             filter === "editing" ? "bg-primary" : ""
           }`}
           onClick={() => handleFilterChange("editing")}
@@ -190,7 +202,7 @@ const PortfolioPage = () => {
           </div>
         </nav>
 
-        <Link to={"/contact"} className="btn">
+        <Link to={"/contact"} className="btn" onClick={scrollToTop}>
           Hire Me
         </Link>
       </div>

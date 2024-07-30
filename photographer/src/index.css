@@ -20,6 +20,19 @@
   }
 
   .btn {
-    @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-primary text-white rounded-lg;
+    @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-[#205295] text-white rounded-lg ;
+    transition: transform 0.2s ease-in-out;
+    
+  }
+  .btn:hover{
+    @apply scale-110
+  }
+
+  .btnReadMore{
+    @apply w-auto h-auto py-2 px-3 bg-action text-white rounded-lg;
+  }
+
+  .btn1{
+    @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-black text-white rounded-lg;
   }
 }

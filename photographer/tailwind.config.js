@@ -20,7 +20,8 @@ export default {
         primary: '#0E1112',
         grey: '#484B4B',
         accent: '#EEF7F9',
-
+        touch:'#7BD3EA',
+        action:'#205295',
       }
     },
   },

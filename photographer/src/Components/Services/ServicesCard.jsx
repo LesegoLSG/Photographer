@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { scrollToTop } from "../Reusable/ScrollToTop";
 
 const ServicesCard = ({ service }) => {
   return (
@@ -14,7 +15,8 @@ const ServicesCard = ({ service }) => {
         </p>
         <Link
           to={`/services/${service.id}`}
-          className="w-auto h-auto py-2 px-3 bg-black text-white rounded-lg"
+          className="btnReadMore"
+          onClick={scrollToTop}
         >
           Read More
         </Link>

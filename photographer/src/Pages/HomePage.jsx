@@ -8,6 +8,7 @@ import { transition1 } from "../Components/Transitions";
 import { CursorContext } from "../Context/CursorContext";
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { scrollToTop } from "../Components/Reusable/ScrollToTop";
 
 const HomePage = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -22,6 +23,7 @@ const HomePage = () => {
     loop: {},
     typeSpeed: 120,
   });
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -44,14 +46,21 @@ const HomePage = () => {
             className="w-full pt-36 pb-14 md:pt-0 md:pb-0 md:w-full z-10 md:absolute flex flex-col justify-center items-start md:items-start"
           >
             <h1 className="h1 text-grey-800 dark:text-white">
-              Photographer <br /> & Cinematographer
+              <span className="text-touch">Photo</span>grapher <br /> & Video
+              <span className="text-touch">grapher</span>
             </h1>
-            <h2 className="h2 mb-4 md:mb-12 dark:text-white">
-              {/* <span>We offer </span> */}
-              <span>{text}</span>
-              <Cursor />
-            </h2>
-            <Link to={"/portfolio"} className="btn mb-[30px] text-center">
+            <div className="w-full h-28 lg:h-14">
+              <h2 className="h2 mb-4 md:mb-12 dark:text-white">
+                {text}
+                <Cursor />
+              </h2>
+            </div>
+
+            <Link
+              to={"/portfolio"}
+              className="btn mb-[30px] text-center"
+              onClick={scrollToTop}
+            >
               View Work
             </Link>
           </motion.div>
@@ -67,9 +76,9 @@ const HomePage = () => {
               <motion.img
                 whileHover={{ scale: 1.1 }}
                 transition={transition1}
-                src={DH}
+                src={LandingPagePic}
                 alt=""
-                className="h-fit w-full object-cover"
+                className="h-fit w-full object-cover "
               />
             </motion.div>
           </div>

@@ -11,7 +11,7 @@ import Toggle from "./Components/Toggle/Toggle";
 function App() {
   const { cursorVariants, cursorBG } = useContext(CursorContext);
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -26,6 +26,7 @@ function App() {
       <Router>
         <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <AnimRoutes />
+        <Footer />
       </Router>
       {/* toggle dark mode button */}
       {/* <Toggle isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} /> */}
@@ -35,7 +36,7 @@ function App() {
         animate={cursorBG}
         className="w-[32px] h-[32px] bg-primary fixed top-0 left-0 pointer-events-none z-50 rounded-full"
       ></motion.div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

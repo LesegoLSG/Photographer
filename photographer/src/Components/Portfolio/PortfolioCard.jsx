@@ -1,24 +1,26 @@
-import React from 'react';
+import React from "react";
 import { RxEnterFullScreen } from "react-icons/rx";
 
-const PortfolioCard = ({singleData,openModal}) => {
+const PortfolioCard = ({ singleData, openModal }) => {
+  const handleImageClick = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    openModal(singleData, rect);
+  };
+
   return (
     <div className="w-[300px] h-[300px] object-fill">
-        {singleData.format === "image" ? (
-          <div className="w-full h-full relative">
-                 <img
-          src={singleData.content}
-          alt="Portfolio Content"
-          className="w-full h-full object-cover "
-         
-        />
-        <RxEnterFullScreen
-         onClick={() => openModal(singleData)}
-        className="absolute bottom-0 right-0 m-3 w-10 h-10 cursor-pointer text-black"/>
-          </div>
-     
-        
-
+      {singleData.format === "image" ? (
+        <div className="w-full h-full relative">
+          <img
+            src={singleData.content}
+            alt="Portfolio Content"
+            className="w-full h-full object-cover "
+          />
+          <RxEnterFullScreen
+            onClick={handleImageClick}
+            className="absolute bottom-0 right-0 m-3 w-10 h-10 cursor-pointer text-black"
+          />
+        </div>
       ) : (
         <iframe
           src={singleData.content}
@@ -30,7 +32,7 @@ const PortfolioCard = ({singleData,openModal}) => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default PortfolioCard
+export default PortfolioCard;

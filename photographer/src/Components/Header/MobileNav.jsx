@@ -3,6 +3,7 @@ import { IoMdClose, IoIosMenu } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Logo from "../../assets/Logo.png";
+import { scrollToTop } from "../Reusable/ScrollToTop";
 
 const menuVariants = {
   hidden: {
@@ -21,6 +22,7 @@ const MobileNav = () => {
 
   const handleLinkClick = () => {
     setIsOpenMenu(false);
+    scrollToTop();
   };
 
   return (

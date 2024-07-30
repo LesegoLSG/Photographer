@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-const PortfolioModal = ({ modalContent, closeModal }) => {
+const PortfolioModal = ({ modalContent, closeModal, rect }) => {
+  const [modalStyle, setModalStyle] = useState({});
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    if (rect) {
+      setModalStyle({
+        position: "absolute",
+        top: `${rect.top}px`,
+        left: `${rect.left}px`,
+        width: `${rect.width}px`,
+        height: `${rect.height}px`,
+        transform: "translateY(0)",
+        transition: "all 0.3s ease",
+      });
+
+      setTimeout(() => {
+        setExpanded(true);
+      }, 0);
+    }
+  }, [rect]);
+
+  useEffect(() => {
+    if (expanded) {
+      setModalStyle({
+        position: "fixed",
+        top: "0%",
+        left: "50%",
+        width: "80%",
+        height: "80%",
+        transform: "translate(-50%, -50%)",
+        transition: "all 0.3s ease",
+      });
+    }
+  }, [expanded]);
+
   const handleClose = (e) => {
     if (e.target.id === "main-container") {
       closeModal();
@@ -13,10 +48,13 @@ const PortfolioModal = ({ modalContent, closeModal }) => {
   return (
     <div
       onClick={handleClose}
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-30 backdrop-blur-sm "
+      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-30 backdrop-blur-sm w-screen min-h-screen"
       id="main-container"
     >
-      <div className="bg-white w-4/5 md:w-3/4 h-auto  rounded-lg relative dark:bg-neutral-900">
+      <div
+        style={modalStyle}
+        className="bg-white w-full h-auto md:max-w-[75%] md:max-h-[80%] rounded-lg dark:bg-neutral-900"
+      >
         <div className="w-full h-auto flex justify-end p-2">
           <button onClick={closeModal} className="focus:outline-none">
             <IoMdClose size={30} />
@@ -27,7 +65,7 @@ const PortfolioModal = ({ modalContent, closeModal }) => {
             <img
               src={modalContent.content}
               alt=""
-              className="max-w-full max-h-fit rounded"
+              className="w-full h-full object-cover rounded"
             />
           ) : (
             <iframe
