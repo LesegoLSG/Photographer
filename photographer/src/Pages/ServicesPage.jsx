@@ -34,7 +34,7 @@ const ServicesPage = () => {
           transition={{ ...transition1, delay: 0.4 }}
           onMouseEnter={mouseEnterHandler}
           onMouseLeave={mouseLeaveHandler}
-          className="h2 dark:text-white"
+          className="h2 dark:text-white mb-2"
         >
           The Best You Can Get
         </motion.h2>
@@ -46,7 +46,7 @@ const ServicesPage = () => {
         transition={{ ...transition1, delay: 0.8 }}
         onMouseEnter={mouseEnterHandler}
         onMouseLeave={mouseLeaveHandler}
-        className="w-full h-auto flex flex-wrap justify-center items-center gap-4 p-4"
+        className="w-full h-auto flex flex-wrap justify-center items-center gap-4 "
       >
         {servicesData.map((service) => (
           <ServicesCard key={service.id} service={service} />
