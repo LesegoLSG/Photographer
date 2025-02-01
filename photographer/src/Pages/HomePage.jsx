@@ -45,10 +45,15 @@ const HomePage = () => {
             onMouseLeave={mouseLeaveHandler}
             className="w-full pt-36 pb-14 md:pt-0 md:pb-0 md:w-full z-10 md:absolute flex flex-col justify-center items-start md:items-start"
           >
-            <h1 className="h1 text-grey-800 dark:text-white">
-              <span className="text-touch">Photo</span>grapher <br /> & Video
-              <span className="text-touch">grapher</span>
-            </h1>
+            <div className="w-full h-auto">
+              {" "}
+              <h1 className="h1 text-grey-800 dark:text-white">
+                <span className="text-touch">Photo</span>
+                grapher <br /> & Video
+                <span className="text-touch">grapher</span>
+              </h1>
+            </div>
+
             <div className="w-full h-28 lg:h-14">
               <h2 className="h2 mb-4 md:mb-12 dark:text-white">
                 {text}
