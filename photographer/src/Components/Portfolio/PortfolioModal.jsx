@@ -1,71 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-const PortfolioModal = ({ modalContent, closeModal, rect }) => {
-  const [modalStyle, setModalStyle] = useState({});
+const PortfolioModal = ({ modalContent, closeModal }) => {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    if (rect) {
-      setModalStyle({
-        position: "absolute",
-        top: `${rect.top}px`,
-        left: `${rect.left}px`,
-        width: `${rect.width}px`,
-        height: `${rect.height}px`,
-        transform: "translateY(0)",
-        transition: "all 0.3s ease",
-      });
-
-      setTimeout(() => {
-        setExpanded(true);
-      }, 0);
-    }
-  }, [rect]);
-
-  useEffect(() => {
-    if (expanded) {
-      setModalStyle({
-        position: "fixed",
-        top: "0%",
-        left: "50%",
-        width: "80%",
-        height: "80%",
-        transform: "translate(-50%, -50%)",
-        transition: "all 0.3s ease",
-      });
-    }
-  }, [expanded]);
-
-  const handleClose = (e) => {
-    if (e.target.id === "main-container") {
-      closeModal();
-    }
-  };
+    setTimeout(() => {
+      setExpanded(true);
+    }, 0);
+  }, []);
 
   if (!modalContent) return null;
 
   return (
     <div
-      onClick={handleClose}
-      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-30 backdrop-blur-sm w-screen min-h-screen"
+      className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50 backdrop-blur-sm"
+      onClick={closeModal}
       id="main-container"
     >
       <div
-        style={modalStyle}
-        className="bg-white w-full h-auto md:max-w-[75%] md:max-h-[80%] rounded-lg dark:bg-neutral-900"
+        className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[100vw] lg:w-[80vw] h-[80vh] bg-white dark:bg-neutral-900 rounded-lg shadow-lg transition-all duration-300 ${
+          expanded ? "scale-100 opacity-100" : "scale-95 opacity-0"
+        }`}
+        onClick={(e) => e.stopPropagation()} // Prevent modal close when clicking inside
       >
-        <div className="w-full h-auto flex justify-end p-2">
+        {/* Close Button */}
+        <div className="absolute top-4 right-4">
           <button onClick={closeModal} className="focus:outline-none">
-            <IoMdClose size={30} />
+            <IoMdClose size={30} className="text-gray-800 dark:text-white" />
           </button>
         </div>
-        <div className="w-full flex justify-center items-center p-6">
+
+        {/* Image or Video */}
+        <div className="w-full h-full flex justify-center items-center p-6">
           {modalContent.format === "image" ? (
             <img
               src={modalContent.content}
-              alt=""
-              className="w-full h-full object-cover rounded"
+              alt="Portfolio"
+              className="w-full h-full object-contain rounded"
             />
           ) : (
             <iframe
@@ -73,7 +45,7 @@ const PortfolioModal = ({ modalContent, closeModal, rect }) => {
               title="Portfolio Video"
               className="w-full h-full"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="autoplay; encrypted-media; fullscreen"
               allowFullScreen
             />
           )}

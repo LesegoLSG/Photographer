@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import data from "../Components/Portfolio/PortfolioData";
 import PortfolioCard from "../Components/Portfolio/PortfolioCard";
 import { Link } from "react-router-dom";
@@ -15,6 +15,8 @@ const PortfolioPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 6;
 
+  const imageSectionRef = useRef(null);
+
   const filterData = data.filter((item) => {
     if (filter === "all") return true;
     return item.category === filter;
@@ -30,6 +32,16 @@ const PortfolioPage = () => {
   const [isModal, setIsModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
+  const scrollToImageSection = () => {
+    console.log("Image ref:", imageSectionRef.current);
+    if (imageSectionRef.current) {
+      imageSectionRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   const openModal = (singleData) => {
     setIsModal(true);
     setModalContent(singleData);
@@ -41,23 +53,27 @@ const PortfolioPage = () => {
 
   const changeCurrentPage = (id) => {
     setCurrentPage(id);
+    scrollToImageSection();
   };
 
   const PrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+      scrollToImageSection();
     }
   };
 
   const NextPage = () => {
     if (currentPage < nPages) {
       setCurrentPage(currentPage + 1);
+      scrollToImageSection();
     }
   };
 
   const handleFilterChange = (category) => {
     setFilter(category);
     setCurrentPage(1); // Reset to the first page when changing filter
+    scrollToImageSection();
   };
 
   return (
@@ -68,7 +84,10 @@ const PortfolioPage = () => {
       transition={transition1}
       className="section pt-32"
     >
-      <div className=" w-full flex-col md:flex-row justify-center items-center ">
+      <div
+        className=" w-full flex-col md:flex-row justify-center items-center "
+        ref={imageSectionRef}
+      >
         <motion.h1
           transition={transition1}
           onMouseEnter={mouseEnterHandler}
