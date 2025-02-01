@@ -67,7 +67,7 @@ const Footer = () => {
                 <br />
                 Soweto <br />
                 1868 <br /> <br />
-                <strong>Phone:</strong> +27 628117125
+                <strong>Phone:</strong> +27 62 811 7125
                 <br />
                 <strong>Email:</strong> diholoseroke1@gmail.com
                 <br />
@@ -96,7 +96,7 @@ const Footer = () => {
             <div>
               &copy;{" "}
               <strong>
-                <span>Diasho</span>
+                <span>Diyasho</span>
               </strong>
               . All Rights Reserved
             </div>
@@ -104,7 +104,7 @@ const Footer = () => {
               Designed by Lesego Mhlongo :{" "}
               <span className="border-b cursor-pointer">
                 <a
-                  href="https://lesego-mhlongo.netlify.app/"
+                  href="https://mhlongolesego.netlify.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
