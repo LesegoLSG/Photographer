@@ -1,38 +1,41 @@
 import React from "react";
-import { RxEnterFullScreen } from "react-icons/rx";
 
-const PortfolioCard = ({ singleData, openModal }) => {
-  const handleImageClick = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    openModal(singleData, rect);
-  };
+const PortfolioCard = ({ singleData }) => {
+  if (!singleData || !singleData.content) {
+    return null;
+  }
+
+  const isVideo = singleData.format === "video";
 
   return (
-    <div className="w-[300px] h-[300px] object-fill">
-      {singleData.format === "image" ? (
-        <div className="w-full h-full relative">
+    <a
+      href={singleData.content}
+      className="glightbox"
+      data-gallery="portfolio"
+      {...(isVideo && {
+        "data-type": "video",
+        "data-source": "html5",
+      })}
+    >
+      <div className="w-[300px] h-[300px] object-fill">
+        {isVideo ? (
+          <video
+            src={singleData.content}
+            className="w-full h-full object-cover"
+            muted
+            playsInline
+            autoPlay
+            loop
+          />
+        ) : (
           <img
             src={singleData.content}
             alt="Portfolio Content"
-            className="w-full h-full object-cover "
+            className="w-full h-full object-cover"
           />
-          <RxEnterFullScreen
-            onClick={handleImageClick}
-            className="absolute bottom-0 right-0 m-3 w-10 h-10 cursor-pointer text-black"
-          />
-        </div>
-      ) : (
-        <iframe
-          src={singleData.content}
-          title="Portfolio Video"
-          className="w-full h-full"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      )}
-    </div>
+        )}
+      </div>
+    </a>
   );
 };
-
 export default PortfolioCard;

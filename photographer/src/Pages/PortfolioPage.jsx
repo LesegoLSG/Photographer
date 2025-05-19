@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import data from "../Components/Portfolio/PortfolioData";
 import PortfolioCard from "../Components/Portfolio/PortfolioCard";
 import { Link } from "react-router-dom";
@@ -7,6 +7,9 @@ import PortfolioModal from "../Components/Portfolio/PortfolioModal";
 import { transition1 } from "../Components/Transitions";
 import { CursorContext } from "../Context/CursorContext";
 import { scrollToTop } from "../Components/Reusable/ScrollToTop";
+
+import GLightbox from "glightbox";
+import "glightbox/dist/css/glightbox.min.css";
 
 const PortfolioPage = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
@@ -32,8 +35,22 @@ const PortfolioPage = () => {
   const [isModal, setIsModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
+  // Glightbox useEffect
+  useEffect(() => {
+    const lightbox = GLightbox({
+      selector: ".glightbox",
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true,
+    });
+
+    return () => {
+      lightbox.destroy();
+    };
+  }, [currentPage, filter]);
+
+  // Scroll to image section
   const scrollToImageSection = () => {
-    console.log("Image ref:", imageSectionRef.current);
     if (imageSectionRef.current) {
       imageSectionRef.current.scrollIntoView({
         behavior: "smooth",
@@ -42,27 +59,20 @@ const PortfolioPage = () => {
     }
   };
 
-  const openModal = (singleData) => {
-    setIsModal(true);
-    setModalContent(singleData);
-  };
-
-  const closeModal = () => {
-    setIsModal(false);
-  };
-
+  // Change current page
   const changeCurrentPage = (id) => {
     setCurrentPage(id);
     scrollToImageSection();
   };
 
+  // Go to prev page
   const PrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
       scrollToImageSection();
     }
   };
-
+  // Go to next page
   const NextPage = () => {
     if (currentPage < nPages) {
       setCurrentPage(currentPage + 1);
@@ -70,6 +80,7 @@ const PortfolioPage = () => {
     }
   };
 
+  // Filter
   const handleFilterChange = (category) => {
     setFilter(category);
     setCurrentPage(1); // Reset to the first page when changing filter
@@ -165,19 +176,10 @@ const PortfolioPage = () => {
           Editing
         </button>
       </div>
-      <div className="w-full md:w-full flex flex-col justify-center items-center">
-        <motion.div
-          transition={transition1}
-          onMouseEnter={mouseEnterHandler}
-          onMouseLeave={mouseLeaveHandler}
-          className="w-full md:w-4/5 h-auto md:px-10 grid md:grid-cols-3 gap-2 justify-items-center"
-        >
+      <div className="w-full flex flex-col justify-center items-center overflow-x-auto md:overflow-x-visible">
+        <motion.div className="w-full max-w-6xl px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
           {currentRecords.map((singleData, index) => (
-            <PortfolioCard
-              key={index}
-              singleData={singleData}
-              openModal={openModal}
-            />
+            <PortfolioCard key={index} singleData={singleData} />
           ))}
         </motion.div>
         {/* Pagination */}
@@ -220,10 +222,10 @@ const PortfolioPage = () => {
             </button>
           </div>
         </nav>
-
         <Link to={"/contact"} className="btn" onClick={scrollToTop}>
           Hire Me
         </Link>
+        //{" "}
       </div>
       {isModal && (
         <PortfolioModal modalContent={modalContent} closeModal={closeModal} />
