@@ -124,7 +124,8 @@ const HomePage = ({ isDarkMode }) => {
                 whileHover={{ scale: 1.1 }}
                 transition={transition1}
                 src={LandingPagePic}
-                alt=""
+                alt="Landing"
+                loading="lazy"
                 className="h-fit w-full object-cover "
               />
             </motion.div>

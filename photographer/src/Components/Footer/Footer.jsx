@@ -23,7 +23,7 @@ const Footer = () => {
             <div
               onMouseEnter={mouseEnterHandler}
               onMouseLeave={mouseLeaveHandler}
-              className="mb-5 text-center"
+              className="hidden md:block mb-5 text-center"
             >
               <h4 className="text-2xl pb-4 dark:text-white">Organization</h4>
               <ul className="dark:text-gray-300">
@@ -49,18 +49,6 @@ const Footer = () => {
               onMouseLeave={mouseLeaveHandler}
               className="mb-5 text-center"
             >
-              <h4 className="text-2xl pb-4 dark:text-white">Important Links</h4>
-              <ul className="dark:text-gray-300">
-                <li className="pb-4 cursor-pointer">Terms of services</li>
-                <li className="pb-4 cursor-pointer">Privacy policy</li>
-                <li className="pb-4 cursor-pointer">Documentation</li>
-              </ul>
-            </div>
-            <div
-              onMouseEnter={mouseEnterHandler}
-              onMouseLeave={mouseLeaveHandler}
-              className="mb-5 text-center"
-            >
               <h4 className="text-2xl pb-4 dark:text-white">Locate Us</h4>
               <p className="dark:text-gray-300">
                 1330 Mosia Street
@@ -76,6 +64,18 @@ const Footer = () => {
             <div
               onMouseEnter={mouseEnterHandler}
               onMouseLeave={mouseLeaveHandler}
+              className="mb-5 text-center"
+            >
+              <h4 className="text-2xl pb-4 dark:text-white">Documentation</h4>
+              <ul className="dark:text-gray-300">
+                <li className="pb-4 cursor-pointer">Terms of services</li>
+                <li className="pb-4 cursor-pointer">Privacy policy</li>
+              </ul>
+            </div>
+
+            <div
+              onMouseEnter={mouseEnterHandler}
+              onMouseLeave={mouseLeaveHandler}
               className="mg-5 flex justify-center items-center px-6"
             >
               <Link to="/" onClick={scrollToTop}>
@@ -85,79 +85,47 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* Bottom section */}
-      <div className="bg-gray-300 text-gray-500 px-10 dark:bg-neutral-950">
-        <div className="max-w-7xl flex flex-col sm:flex-row py-2 mx-auto justify-between items-center">
-          <div
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            className="text-center"
-          >
-            <div>
-              &copy;{" "}
-              <strong>
-                <span>Diyasho</span>
-              </strong>
-              . All Rights Reserved
-            </div>
-            <div>
-              Designed by Lesego Mhlongo :{" "}
-              <span className="border-b cursor-pointer">
-                <a
-                  href="https://mhlongolesego.netlify.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Link
-                </a>
-              </span>
-            </div>
+      {/* Bottom Section */}
+      <div className="bg-gray-200 dark:bg-neutral-950">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600 dark:text-gray-400">
+          {/* Logo + Copyright */}
+          <div className="flex items-center gap-3 mb-3 sm:mb-0">
+            <span>
+              © <strong>Diyasho</strong> {new Date().getFullYear()}. All Rights
+              Reserved
+            </span>
           </div>
-          <div
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            className="flex justify-center items-center gap-x-2"
-          >
-            <ul className="flex justify-center items-center gap-x-4  text-action">
-              <li>
-                <a
-                  href="mailto:diholoseroke1@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <IoIosMail size={25} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://wa.me/0628117125"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaWhatsapp size={25} />
-                </a>
-              </li>
 
-              <li>
-                <a
-                  href="https://www.facebook.com/diholo.seroke"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaFacebook size={25} />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.instagram.com/diyasho_gallery?igsh=MThwdjV1bTUwczBpOA=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaInstagram size={25} />
-                </a>
-              </li>
-            </ul>
+          {/* Social Icons */}
+          <div className="flex gap-4 text-action">
+            <a
+              href="mailto:diholoseroke1@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IoIosMail size={20} />
+            </a>
+            <a
+              href="https://wa.me/0628117125"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaWhatsapp size={20} />
+            </a>
+            <a
+              href="https://www.facebook.com/diholo.seroke"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebook size={20} />
+            </a>
+            <a
+              href="https://www.instagram.com/diyasho_gallery?igsh=MThwdjV1bTUwczBpOA=="
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram size={20} />
+            </a>
           </div>
         </div>
       </div>

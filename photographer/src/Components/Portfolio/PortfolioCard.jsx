@@ -32,6 +32,7 @@ const PortfolioCard = ({ singleData }) => {
             src={singleData.content}
             alt="Portfolio Content"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
         )}
       </div>

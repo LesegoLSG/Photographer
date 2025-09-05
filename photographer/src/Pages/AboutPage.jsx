@@ -30,6 +30,7 @@ const AboutPage = () => {
               transition={transition1}
               src={AboutImage}
               alt=""
+              loading="lazy"
               className="md:w-[500px] md:h-[500px] border-4 border-dotted border-touch"
             />
           </div>
