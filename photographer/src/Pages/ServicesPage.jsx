@@ -14,7 +14,7 @@ const ServicesPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "100%" }}
       transition={transition1}
-      className="section dark:bg-neutral-900"
+      className="section dark:bg-neutral-900 mb-12"
     >
       {/* Heading and subheading */}
       <div className="w-full h-auto flex flex-col gap-y-4 justify-center items-center pt-36 ">

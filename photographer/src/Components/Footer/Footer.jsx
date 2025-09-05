@@ -16,7 +16,7 @@ import { scrollToTop } from "../Reusable/ScrollToTop";
 const Footer = () => {
   const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
   return (
-    <footer className="bg-gray-200 dark:bg-black z-50 mt-12">
+    <footer className="bg-gray-200 dark:bg-black z-50 ">
       <div className="p-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
@@ -62,7 +62,7 @@ const Footer = () => {
               className="mb-5 text-center"
             >
               <h4 className="text-2xl pb-4 dark:text-white">Locate Us</h4>
-              <p className="text-gray-500 dark:text-gray-300">
+              <p className="dark:text-gray-300">
                 1330 Mosia Street
                 <br />
                 Soweto <br />
@@ -87,7 +87,7 @@ const Footer = () => {
       </div>
       {/* Bottom section */}
       <div className="bg-gray-300 text-gray-500 px-10 dark:bg-neutral-950">
-        <div className="max-w-7xl flex flex-col sm:flex-row py-4 mx-auto justify-between items-center">
+        <div className="max-w-7xl flex flex-col sm:flex-row py-2 mx-auto justify-between items-center">
           <div
             onMouseEnter={mouseEnterHandler}
             onMouseLeave={mouseLeaveHandler}

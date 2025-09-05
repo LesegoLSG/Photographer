@@ -1,5 +1,6 @@
 import React from "react";
 import "./Toggle.css";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const Toggle = ({ isDarkMode, setIsDarkMode }) => {
   return (
@@ -12,7 +13,7 @@ const Toggle = ({ isDarkMode, setIsDarkMode }) => {
         checked={isDarkMode}
       />
       <label htmlFor="check" className="dark:text-white">
-        {isDarkMode ? "Light" : "Dark"}
+        {isDarkMode ? <FiSun className="text-yellow-500" /> : <FiMoon />}
       </label>
     </div>
   );

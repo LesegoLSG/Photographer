@@ -14,7 +14,7 @@ const AboutPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "100%" }}
       transition={transition1}
-      className="w-full min-h-screen md:min-h-[calc(100vh-70px)] px-6 md:px-4 overflow-hidden bg-white dark:bg-neutral-900"
+      className="w-full min-h-screen md:min-h-[calc(100vh-70px)] px-6 md:px-4 overflow-hidden bg-white dark:bg-neutral-900 mb-12"
     >
       <div
         onMouseEnter={mouseEnterHandler}

@@ -93,7 +93,7 @@ const PortfolioPage = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: "100%" }}
       transition={transition1}
-      className="section pt-32"
+      className="section pt-32  mb-12"
     >
       <div
         className=" w-full flex-col md:flex-row justify-center items-center "

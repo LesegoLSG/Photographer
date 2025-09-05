@@ -25,7 +25,7 @@ function App() {
     <div className="dark:bg-neutral-900">
       <Router>
         <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-        <AnimRoutes />
+        <AnimRoutes isDarkMode={isDarkMode} />
         <Footer />
       </Router>
       {/* toggle dark mode button */}

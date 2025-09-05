@@ -35,4 +35,15 @@
   .btn1{
     @apply py-[18px] px-[50px] h-[66px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-black text-white rounded-lg;
   }
+
+  .diagonal-bg {
+  /* Split the background diagonally using a linear gradient */
+  background: linear-gradient(
+    135deg,           /* angle for diagonal */
+    #205295 50%,       /* left-top color */
+    #84A7A1 50%        /* right-bottom color */
+  );
 }
+}
+
+

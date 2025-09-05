@@ -36,7 +36,7 @@ const ContactPage = () => {
   };
 
   return (
-    <motion.section className="w-full min-h-screen md:h-[calc(100vh-100px)] px-6 md:px-4 bg-white dark:bg-neutral-900">
+    <motion.section className="w-full min-h-screen md:h-[calc(100vh-100px)] px-6 md:px-4 bg-white dark:bg-neutral-900 mb-12">
       <div className="container mx-auto h-full">
         <div className="flex flex-col md:flex-row h-full items-center justify-start pt-30 gap-x-8 text-center md:text-left">
           <motion.div
