@@ -46,4 +46,19 @@
 }
 }
 
+@layer utilities {
+  .glightbox .gprev,
+  .glightbox .gnext {
+    @apply flex opacity-100 visible w-10 h-10 items-center justify-center text-white bg-black/50 rounded-full;
+  }
+
+  /* Optional: Make arrows bigger on mobile for easy tapping */
+  @media (max-width: 640px) {
+    .glightbox .gprev,
+    .glightbox .gnext {
+      @apply w-12 h-12 text-lg;
+    }
+  }
+}
+
 

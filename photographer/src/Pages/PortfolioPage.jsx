@@ -42,6 +42,7 @@ const PortfolioPage = () => {
       touchNavigation: true,
       loop: true,
       autoplayVideos: true,
+      arrows: true,
     });
 
     return () => {
